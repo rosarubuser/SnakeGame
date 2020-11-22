@@ -1,24 +1,15 @@
 #pragma once
-
-// Ruochen Wang ruochwang@gmail.com
-
 #include <ncurses.h>
-#include <vector>
-#include "Snake.h"
 
 class Canvas {
 public:
-    void getCurrentScreenSize();
-    void refreshScreen();
-
-    void init();
-
-    void stop();
-
-
+    static void initDsp();
 
 private:
-    int x;
-    int y;
-    std::vector<Snake> snakes;
+    // TODO: not sure weather to declare extern variables?
+    // TODO: not sure to use static or extern
+    static int TOP_ROW;
+    static int BOT_ROW;
+    static int LEFT_EDGE;
+    static int RIGHT_EDGE;
 };
