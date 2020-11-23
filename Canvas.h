@@ -6,10 +6,13 @@ public:
     static void initDsp();
 
 private:
-    // TODO: not sure weather to declare extern variables?
+    // TODO: not sure whether to declare extern variables?
     // TODO: not sure to use static or extern
-    static int TOP_ROW;
-    static int BOT_ROW;
-    static int LEFT_EDGE;
+    // TODO: not sure whether to write static variables in header file
+
+/*    static int LEFT_EDGE;
     static int RIGHT_EDGE;
+    static int TOP_ROW;
+    static int BOT_ROW;*/
 };
+

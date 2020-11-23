@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <unistd.h> //?
 #include "Canvas.h"
+#include <iostream>
 
 #define SNAKE_SYMBOL '@'
 #define FOOD_SYMBOL '*'
