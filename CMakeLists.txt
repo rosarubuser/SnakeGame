@@ -3,5 +3,5 @@ project(SnakeGame)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SnakeGame main.cpp Canvas.cpp Canvas.h)
+add_executable(SnakeGame main.c Display.c Display.h)
 target_link_libraries(SnakeGame ncurses)

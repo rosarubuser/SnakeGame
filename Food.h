@@ -1,9 +1,6 @@
-//
-// Created by Lily LI on 2020/11/22.
-//
-
-class Food {
-private:
+struct Food {
     int posX;
     int posY;
 };
+
+void food_disp();   // display the food; TODO
