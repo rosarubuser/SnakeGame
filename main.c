@@ -1,6 +1,14 @@
-#include "Display.h"
+#include "canvas.h"
+#include "food.h"
+#include "snake.h"
 
-int main(void) {
+int main() {
     init_disp();
-    return 1;
+    food_disp();
+    snake_create();
+    signal(SIGALRM, snake_move);
+    set_timer(DFT_SPEED);
+    key_control();
+    wrap_up();
+    return 0;
 };

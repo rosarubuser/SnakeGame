@@ -1,12 +1,11 @@
-#include "Display.h"
-#include <ncurses.h>
+#include "canvas.h"
 
 /*
  * init and display the interface
  * return: none
  */
 void init_disp() {
-    char wall = 's';    // TESTING
+    char wall = ' ';    // TESTING
 
     initscr();  // initialize the ncurses
     cbreak();   // receive the input in buffer
@@ -25,7 +24,7 @@ void init_disp() {
     //draw the three rows: 0, TOP_ROW(5) & BOT_ROW for the game zone
     // game starts at Line 6
     for (int i = 0; i < COLS; i++) {
-        mvaddch(0, i, '0');
+        mvaddch(0, i, '-');
         mvaddch(TOP_ROW, i, wall);
         mvaddch(BOT_ROW, i, wall);
     }
@@ -40,3 +39,27 @@ void init_disp() {
     refresh();  // update the screen
 }
 
+void gameover(int n) {
+    switch(n) {
+        case 0:
+            mvaddstr(LINES / 2, COLS / 3 - 4, "WIN! PRESS ANY KEY TO EXIT.");
+            break;
+        case 1:
+            mvaddstr(LINES / 2, COLS / 3 - 4, "CRASH THE WALL! PRESS ANY KEY TO EXIT.");
+            break;
+        case 2:
+            mvaddstr(LINES / 2, COLS / 3 - 4, "EAT YOURSELF! PRESS ANY KEY TO EXIT.");
+            break;
+    }
+    refresh();
+    set_timer(0);
+    // TODO
+}
+
+void wrap_up() {
+    set_timer(0);   // turn off the timer
+    // getchar();  //??
+    snake_clear();
+    endwin();   // should always call endwin() before turning off curses & exit the terminal
+    exit(0);
+}
