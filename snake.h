@@ -9,8 +9,8 @@
 #include "food.h"
 
 #define SNAKE_SYMBOL '@'    // snake body symbol
-#define  MAX_NODE 30    // maximum no. of snake body nodes
-#define DFT_SPEED 50    // TODO: default snake speed
+#define  MAX_NODE 20    // maximum no. of snake body nodes
+#define DFT_SPEED 50    // to control the default snake speed
 
 /*
  * location of the snake head
@@ -23,16 +23,16 @@ typedef struct snake_node {
     struct snake_node *next;
 } snake_node;
 
-struct snake_node *head, *tail; // set two ends
+struct snake_node *head, *tail; // sets two dummy nodes for DLL snake structure
 
 void snake_create();    // use doubly linked list to create a snake
 
 void snake_move();  // control the snake movement
-int set_timer(int n_msecs);   // TODO ??
-void key_control();     // using the keyboard to control the snake; TODO
+int set_timer(int n_msecs);   // set the timer to run the snake_move function
+void key_control();     // using the keyboard to control the game;
 
 void snake_insert_node(int x, int y);   // lengthen the snake body
-void snake_delete_node();   // delete the snake body node?
+void snake_delete_node();   // delete single snake node
 void snake_clear();   // delete all the snake nodes
 
 #endif

@@ -1,15 +1,15 @@
 #include "canvas.h"
 
 /*
- * init and display the interface
+ * initialize and display the interface
  * return: none
  */
 void init_disp() {
-    char wall = ' ';    // TESTING
+    char wall = ' ';
 
     initscr();  // initialize the ncurses
-    cbreak();   // receive the input in buffer
-    noecho();   // not display the key input on interface
+    cbreak();   // receive the input into buffer
+    noecho();   // No the key input display on the interface
     curs_set(0);    // make terminal cursor invisible
 
     attrset(A_NORMAL);   // set the display property to normal mode
@@ -21,10 +21,10 @@ void init_disp() {
         mvaddch(i, RIGHT_EDGE, wall);
     }
 
-    //draw the three rows: 0, TOP_ROW(5) & BOT_ROW for the game zone
+    // draw the three rows: 0, TOP_ROW(5) & BOT_ROW for the game zone
     // game starts at Line 6
     for (int i = 0; i < COLS; i++) {
-        mvaddch(0, i, '-');
+        mvaddch(0, i, ' ');
         mvaddch(TOP_ROW, i, wall);
         mvaddch(BOT_ROW, i, wall);
     }
@@ -35,30 +35,35 @@ void init_disp() {
     mvaddstr(2, 2, "Author: Lily LI    Contact: rosarubuser@gmail.com");
     mvaddstr(3, 2, "Rule: Press 'f' to speed up. 's' to slow down. 'q' to quit");
     mvaddstr(4, 2, "      Use Navigation key to control the movement");
+    mvaddstr(5, 2, "Target: Eat 20 foods to win the game");
 
     refresh();  // update the screen
 }
 
+/*
+ * different ways to end the game; n represents the mode
+ */
 void gameover(int n) {
+    set_timer(0);   // stop the snake movement
     switch(n) {
         case 0:
-            mvaddstr(LINES / 2, COLS / 3 - 4, "WIN! PRESS ANY KEY TO EXIT.");
+            mvaddstr(LINES / 2, COLS / 3 - 4, "WIN! PRESS q TO EXIT.");
             break;
         case 1:
-            mvaddstr(LINES / 2, COLS / 3 - 4, "CRASH THE WALL! PRESS ANY KEY TO EXIT.");
+            mvaddstr(LINES / 2, COLS / 3 - 4, "CRASH THE WALL! PRESS q TO EXIT.");
             break;
         case 2:
-            mvaddstr(LINES / 2, COLS / 3 - 4, "EAT YOURSELF! PRESS ANY KEY TO EXIT.");
+            mvaddstr(LINES / 2, COLS / 3 - 4, "EAT YOURSELF! PRESS q TO EXIT.");
             break;
     }
     refresh();
-    set_timer(0);
-    // TODO
 }
 
+/*
+ * do the wrap-up work after ending the game
+ */
 void wrap_up() {
-    set_timer(0);   // turn off the timer
-    // getchar();  //??
+    set_timer(0);   // in case the game is quit before the gameover()
     snake_clear();
     endwin();   // should always call endwin() before turning off curses & exit the terminal
     exit(0);
