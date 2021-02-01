@@ -35,7 +35,7 @@ void init_disp() {
     mvaddstr(2, 2, "Author: Lily LI    Contact: rosarubuser@gmail.com");
     mvaddstr(3, 2, "Rule: Press 'f' to speed up. 's' to slow down. 'q' to quit");
     mvaddstr(4, 2, "      Use Navigation key to control the movement");
-    mvaddstr(5, 2, "Target: Eat 20 foods to win the game");
+    mvaddstr(5, 2, "Target: Eat 25 foods to win the game");
 
     refresh();  // update the screen
 }

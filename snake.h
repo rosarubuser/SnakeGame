@@ -9,7 +9,7 @@
 #include "food.h"
 
 #define SNAKE_SYMBOL '@'    // snake body symbol
-#define  MAX_NODE 20    // maximum no. of snake body nodes
+#define  MAX_NODE 25    // maximum no. of snake body nodes
 #define DFT_SPEED 50    // to control the default snake speed
 
 /*
